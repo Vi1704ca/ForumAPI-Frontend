@@ -1,0 +1,30 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #26374b;
+  background: repeating-linear-gradient(
+    135deg,
+    #ffffff 0 1.125rem,
+    #e7eff8 1.125rem 2.25rem
+  );
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-size: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 20rem;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+a {
+  font: inherit;
+}

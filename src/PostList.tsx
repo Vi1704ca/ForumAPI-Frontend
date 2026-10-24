@@ -1,4 +1,4 @@
-import type { Post as PostData } from './data/Post.types'
+import type { Post as PostData } from './types/Post.types'
 import Post from './Post'
 
 type PostListProps = {

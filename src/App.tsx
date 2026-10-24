@@ -1,9 +1,11 @@
 import Header from './Header'
 import PostList from './PostList'
-import { posts } from './data/posts'
 import './App.css'
+import { useGetPostsQuery } from './api/baseApi'
 
 function App() {
+  const { data, isLoading, isError } = useGetPostsQuery()
+
   return (
     <>
       <Header />
@@ -22,9 +24,12 @@ function App() {
               <p className="eyebrow">ОСТАННІ ОБГОВОРЕННЯ</p>
               <h2 id="feed-title">Стрічка постів</h2>
             </div>
-            <span className="post-count">{posts.length} постів</span>
+            <span className="post-count">{data?.length ?? 0} постів</span>
           </div>
-          <PostList posts={posts} />
+          {isLoading && <p>Завантаження...</p>}
+          {isError && <p>Не вдалося завантажити пости.</p>}
+          {data && data.length > 0 && <PostList posts={data} />}
+          {data?.length === 0 && <p>Пости не знайдено.</p>}
         </section>
       </main>
     </>

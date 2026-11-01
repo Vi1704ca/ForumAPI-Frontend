@@ -11,7 +11,7 @@ function Post({ post }: PostProps) {
       <h3>{post.title}</h3>
       <p>{post.content}</p>
       <div className="post-meta">
-        <span>{post.author}</span>
+        <span>{post.author?.email ?? 'Невідомий автор'}</span>
         {post.createdAt && (
           <time dateTime={post.createdAt}>
             {post.dateLabel ?? post.createdAt}

@@ -7,7 +7,10 @@ export type Post = {
   id: number
   title: string
   content: string
-  author: string
+  author: {
+    id: number
+    email: string
+  } | null
   category: Category
   createdAt?: string
   dateLabel?: string

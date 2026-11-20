@@ -1,5 +1,6 @@
 import Header from './Header'
 import PostList from './PostList'
+import AuthForm from './AuthForm'
 import './App.css'
 import { useGetPostsQuery } from './api/baseApi'
 
@@ -17,6 +18,8 @@ function App() {
             Ділись думками, став запитання та знаходь корисні відповіді.
           </p>
         </section>
+
+        <AuthForm />
 
         <section className="feed" aria-labelledby="feed-title">
           <div className="feed-heading">

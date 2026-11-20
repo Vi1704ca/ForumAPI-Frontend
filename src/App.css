@@ -65,6 +65,112 @@
   line-height: 1.6;
 }
 
+.auth-card {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  overflow: hidden;
+  margin-top: 1.5rem;
+  border: 1px solid #e5eaf0;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 0.5rem 1.5rem rgb(36 56 79 / 5%);
+}
+
+.auth-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  background: #f5f8fb;
+}
+
+.auth-tab {
+  padding: 0.75rem 0.9rem;
+  border: 0;
+  border-radius: 0.6rem;
+  background: transparent;
+  color: #60758d;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: left;
+}
+
+.auth-tab.active {
+  background: #fff;
+  color: #315f8a;
+  box-shadow: 0 0.15rem 0.5rem rgb(36 56 79 / 8%);
+}
+
+.auth-content {
+  padding: 1.5rem 2rem;
+}
+
+.auth-content h2 {
+  margin: 0;
+  color: #1d2d40;
+  font-size: 1.35rem;
+}
+
+.auth-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.form-field {
+  display: grid;
+  align-content: start;
+  gap: 0.4rem;
+  color: #49637f;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.form-field input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #d9e2ec;
+  border-radius: 0.55rem;
+  background: #fff;
+  color: #26374b;
+  font: inherit;
+  font-weight: 400;
+}
+
+.form-field input:focus {
+  border-color: #7098bd;
+  outline: 3px solid rgb(112 152 189 / 18%);
+}
+
+.field-error {
+  color: #b94343;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.auth-submit {
+  align-self: end;
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 0.55rem;
+  background: #315f8a;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.auth-submit:hover:not(:disabled) {
+  background: #264d72;
+}
+
+.auth-submit:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
 .feed {
   margin-top: 2.5rem;
 }
@@ -147,4 +253,47 @@
   margin-top: 1rem;
   color: #8290a0;
   font-size: 0.8rem;
+}
+
+@media (max-width: 56rem) {
+  .header-inner,
+  .page-content {
+    width: min(100% - 2rem, 52rem);
+  }
+}
+
+@media (max-width: 42rem) {
+  .page-content {
+    padding-top: 1.5rem;
+  }
+
+  .welcome {
+    padding: 1.5rem;
+  }
+
+  .welcome h1 {
+    font-size: 1.6rem;
+  }
+
+  .auth-card {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-tabs {
+    flex-direction: row;
+    padding: 0.75rem;
+  }
+
+  .auth-tab {
+    flex: 1;
+    text-align: center;
+  }
+
+  .auth-content {
+    padding: 1.25rem;
+  }
+
+  .auth-form {
+    grid-template-columns: 1fr;
+  }
 }

@@ -9,8 +9,8 @@
 
 .header-inner {
   display: flex;
-  width: 52rem;
-  min-height: 4.5rem;
+  width: min(100% - 2.5rem, 68.75rem);
+  min-height: 4.75rem;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
@@ -30,9 +30,9 @@
 }
 
 .page-content {
-  width: 52rem;
+  width: min(100% - 2.5rem, 68.75rem);
   margin: 0 auto;
-  padding: 3rem 0 4rem;
+  padding: 2.5rem 0 4rem;
 }
 
 .welcome {
@@ -255,10 +255,38 @@
   font-size: 0.8rem;
 }
 
+.form-error {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #efcaca;
+  border-radius: 0.55rem;
+  background: #fff5f5;
+  color: #a83d3d;
+  font-size: 0.85rem;
+}
+
+.current-user-card {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid #dce7d8;
+  border-radius: 0.85rem;
+  background: #f3f8f1;
+  color: #3f6548;
+}
+
+.current-user-label {
+  color: #6e856f;
+  font-size: 0.85rem;
+}
+
 @media (max-width: 56rem) {
   .header-inner,
   .page-content {
-    width: min(100% - 2rem, 52rem);
+    width: min(100% - 2rem, 68.75rem);
   }
 }
 

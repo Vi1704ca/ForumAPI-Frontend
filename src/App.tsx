@@ -2,10 +2,11 @@ import Header from './Header'
 import PostList from './PostList'
 import AuthForm from './AuthForm'
 import './App.css'
-import { useGetPostsQuery } from './api/baseApi'
+import { useGetMeQuery, useGetPostsQuery } from './api/baseApi'
 
 function App() {
-  const { data, isLoading, isError } = useGetPostsQuery()
+  const { data: posts, isLoading, isError } = useGetPostsQuery()
+  const { data: currentUser } = useGetMeQuery()
 
   return (
     <>
@@ -19,7 +20,14 @@ function App() {
           </p>
         </section>
 
-        <AuthForm />
+        {currentUser ? (
+          <section className="current-user-card" aria-live="polite">
+            <span className="current-user-label">Ви увійшли як</span>
+            <strong>{currentUser.email}</strong>
+          </section>
+        ) : (
+          <AuthForm />
+        )}
 
         <section className="feed" aria-labelledby="feed-title">
           <div className="feed-heading">
@@ -27,12 +35,12 @@ function App() {
               <p className="eyebrow">ОСТАННІ ОБГОВОРЕННЯ</p>
               <h2 id="feed-title">Стрічка постів</h2>
             </div>
-            <span className="post-count">{data?.length ?? 0} постів</span>
+            <span className="post-count">{posts?.length ?? 0} постів</span>
           </div>
           {isLoading && <p>Завантаження...</p>}
           {isError && <p>Не вдалося завантажити пости.</p>}
-          {data && data.length > 0 && <PostList posts={data} />}
-          {data?.length === 0 && <p>Пости не знайдено.</p>}
+          {posts && posts.length > 0 && <PostList posts={posts} />}
+          {posts?.length === 0 && <p>Пости не знайдено.</p>}
         </section>
       </main>
     </>

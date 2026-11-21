@@ -14,32 +14,37 @@ type LoginRequest = {
 
 type UserResponse = {
   id: number
-  name: string
   email: string
 }
 
 export const baseAPI = createApi({
   reducerPath: 'api',
+  tagTypes: ['Me'],
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:3000/',
+    credentials: 'include',
   }),
   endpoints: (builder) => ({
     getPosts: builder.query<Post[], void>({
-      query: () => '/posts',
+      query: () => ({ url: 'http://localhost:3000/posts', credentials: 'omit' }),
     }),
-    register: builder.mutation<UserResponse, RegisterRequest>({
+    register: builder.mutation<UserResponse, Omit<RegisterRequest, 'name'>>({
       query: (body) => ({
-        url: '/auth/register',
+        url: 'http://localhost:3000/auth/register',
         method: 'POST',
         body,
       }),
     }),
     login: builder.mutation<UserResponse, LoginRequest>({
       query: (body) => ({
-        url: '/auth/login',
+        url: 'http://localhost:3000/auth/login',
         method: 'POST',
         body,
       }),
+      invalidatesTags: ['Me'],
+    }),
+    getMe: builder.query<UserResponse, void>({
+      query: () => 'http://localhost:3000/auth/me',
+      providesTags: ['Me'],
     }),
   }),
 })
@@ -48,4 +53,5 @@ export const {
   useGetPostsQuery,
   useRegisterMutation,
   useLoginMutation,
+  useGetMeQuery,
 } = baseAPI
